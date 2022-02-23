@@ -14,7 +14,6 @@ function App() {
     const remoteVideoRef = useRef();
     const pc = useRef(new RTCPeerConnection(null));
     const textRef = useRef()
-    //const candidates = useRef([])
     const [offerVisible, setOfferVisible] = useState(true)
     const [answerVisible, setAnswerVisible] = useState(false)
     const [status, setStatus] = useState('Make a call now')
@@ -40,7 +39,6 @@ function App() {
         
         socket.on('candidate', candidate => {
             console.log(candidate)
-            // candidates.current = [ ...candidates.current, candidate]
             pc.current.addIceCandidate(new RTCIceCandidate(candidate))
         })
         
@@ -112,23 +110,6 @@ function App() {
             setStatus('Call established!')
         }).catch(e => console.log(e))
     }
-    
-   /*  const setRemoteDescription = () => {
-        const sdp = JSON.parse(textRef.current.value)
-        console.log(sdp)
-        
-        pc.current.setRemoteDescription(new RTCSessionDescription(sdp))
-    } */
-    
-    /* const addCandidate = () => {
-        const candidate = JSON.parse(textRef.current.value)
-        console.log('Adding Candidate...', candidate)
-        
-        candidates.current.forEach(candidate => {
-            console.log(candidate)
-            pc.current.addIceCandidate(new RTCIceCandidate(candidate))
-        })
-    } */
     
     const showHideButtons = () => {
         if (offerVisible) {
