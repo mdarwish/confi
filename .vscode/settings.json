@@ -1,0 +1,6 @@
+{
+    "html.format.indentInnerHtml": true,
+    "json.format.enable": false,
+    "prettier.embeddedLanguageFormatting": "off",
+    "javascript.format.enable": false
+}
